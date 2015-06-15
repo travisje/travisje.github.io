@@ -4,7 +4,7 @@
   <title><![CDATA[Travis Emmett's blog]]></title>
   <link href="http://travisje.github.io/atom.xml" rel="self"/>
   <link href="http://travisje.github.io/"/>
-  <updated>2015-06-15T09:17:36-04:00</updated>
+  <updated>2015-06-15T09:20:18-04:00</updated>
   <id>http://travisje.github.io/</id>
   <author>
     <name><![CDATA[Travis Emmett]]></name>
@@ -31,7 +31,7 @@
 <p>Ruby as a language for people, instead of computers:
 I really dig this concept.  When I was trying to figure out what programming language to learn, I remember trying one that required like 5 lines to add 2 +2.  While I can understand various loyalties people have towards one language or another (I also think there can be a natural tendency for this the more difficult something is), it seems to me there is something very powerful in a flexible language that makes it easy to express yourself simply without obfuscation. The easier something is to express, implement, and understand, the more opportunity there is for trial and error and experimentation, something I think crucial to invention and making anything better. After all, as our instructor Avi Flombaum has mentioned, the human brain can only process a limited amount of data (around 60 bits per second) when making a decision, so why not leave as much of this power as possible to devise better ways to perform the task at hand than to comprehend the instructions in the first place?</p>
 
-<p>I also wonder where this takes you if you follow the premise of this argument further. Are there inefficiencies of the spoken and written word that perhaps could allow for even more powerful languages to emerge? Perhaps there’s a sort of programming equivalent that allows for comprehension on multiple levels at once, like Charles Joseph Minard’s famous info graphic charting Napoleon’s disastrous march through Russia in 1812. I&rsquo;m definitely not smart enough to answer this question, but it’s something I’ve been thinking about and look forward to looking into further!</p>
+<p>I also wonder where this takes you if you follow the premise of this argument further. Are there inefficiencies of the spoken and written word that perhaps could allow for even more powerful languages to emerge? Perhaps there’s a sort of programming equivalent that allows for comprehension on multiple levels at once, like Charles Joseph Minard’s famous info graphic charting <a href="https://en.wikipedia.org/?title=Charles_Joseph_Minard"> Napoleon’s disastrous march through Russia in 1812</a>. I&rsquo;m definitely not smart enough to answer this question, but it’s something I’ve been thinking about and look forward to looking into further!</p>
 ]]></content>
   </entry>
   
