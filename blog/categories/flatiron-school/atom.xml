@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Flatiron&nbsp;school | Travis Emmett's blog]]></title>
   <link href="http://travisje.github.io/blog/categories/flatiron-school/atom.xml" rel="self"/>
   <link href="http://travisje.github.io/"/>
-  <updated>2015-06-14T15:04:09-04:00</updated>
+  <updated>2015-06-15T09:17:36-04:00</updated>
   <id>http://travisje.github.io/</id>
   <author>
     <name><![CDATA[Travis Emmett]]></name>
@@ -14,11 +14,24 @@
 
   
   <entry>
-    <title type="html"><![CDATA[My First Post on Octopress]]></title>
+    <title type="html"><![CDATA[A (New) Programmer’s Musings]]></title>
     <link href="http://travisje.github.io/blog/2015/06/14/my-first-post-on-octopress/"/>
     <updated>2015-06-14T14:41:34-04:00</updated>
     <id>http://travisje.github.io/blog/2015/06/14/my-first-post-on-octopress</id>
-    <content type="html"><![CDATA[<p>Hello World</p>
+    <content type="html"><![CDATA[<p>A (new) Programmer’s Musings</p>
+
+<p>Week two has just wrapped up on my wild and crazy journey that is The Flatiron School.  I feel really lucky to be here and to be surrounded by such smart folks, and even more lucky that in a few months time I might be able to work somewhere as a full time web developer.</p>
+
+<p>As a relative newcomer to the programming field, I’ve found myself wondering about various aspects of the field that I’ve either taken for granted or never thought that much about before.  My aim is to use this a tool to investigate these things further. To the veteran CS professional or developer, these may likely seem like unoriginal questions coupled with misguided intuitions, but hey, it’s a blog so I get to do what I want! ;)</p>
+
+<p>And, since I’ve always had more fun asking questions than answering them, here are some of the things I’ve been thinking in no specific order:</p>
+
+<p>It seems like the number of programming languages is increasing more rapidly as time goes on, as opposed to human language which is converging around one. Is this an indication that we are still very early in the computer revolution? Or perhaps an indication that the two things are very different from each other? Perhaps this isn’t an appropriate comparison, but it’s something that piques my interest.</p>
+
+<p>Ruby as a language for people, instead of computers:
+I really dig this concept.  When I was trying to figure out what programming language to learn, I remember trying one that required like 5 lines to add 2 +2.  While I can understand various loyalties people have towards one language or another (I also think there can be a natural tendency for this the more difficult something is), it seems to me there is something very powerful in a flexible language that makes it easy to express yourself simply without obfuscation. The easier something is to express, implement, and understand, the more opportunity there is for trial and error and experimentation, something I think crucial to invention and making anything better. After all, as our instructor Avi Flombaum has mentioned, the human brain can only process a limited amount of data (around 60 bits per second) when making a decision, so why not leave as much of this power as possible to devise better ways to perform the task at hand than to comprehend the instructions in the first place?</p>
+
+<p>I also wonder where this takes you if you follow the premise of this argument further. Are there inefficiencies of the spoken and written word that perhaps could allow for even more powerful languages to emerge? Perhaps there’s a sort of programming equivalent that allows for comprehension on multiple levels at once, like Charles Joseph Minard’s famous info graphic charting Napoleon’s disastrous march through Russia in 1812. I&rsquo;m definitely not smart enough to answer this question, but it’s something I’ve been thinking about and look forward to looking into further!</p>
 ]]></content>
   </entry>
   
