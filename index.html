@@ -9,7 +9,7 @@
   <meta name="author" content="Travis Emmett">
 
   
-  <meta name="description" content="A (new) Programmer’s Musings Week two has just wrapped up on my wild and crazy journey that is The Flatiron School. I feel really lucky to be here &hellip;">
+  <meta name="description" content="I love things that expose a little bit of what Ruby is doing under the hood. And I’m new to object orientation so you will just have to humor me here &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,6 +71,119 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2015/06/23/dude/">Dude, Where's My Object?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-06-23T20:03:53-04:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>8:03 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I love things that expose a little bit of what Ruby is doing under the hood. And I’m new to object orientation so you will just have to humor me here. Let’s say you’re in IRB and you just created a shiny new Car class with the following Ruby code:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Car</span>
+</span><span class='line'><span class="kp">attr_accessor</span> <span class="ss">:make</span><span class="p">,</span> <span class="ss">:model</span><span class="p">,</span> <span class="ss">:year</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">make</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">year</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@make</span> <span class="o">=</span> <span class="n">make</span>
+</span><span class='line'>    <span class="vi">@model</span> <span class="o">=</span> <span class="n">model</span>
+</span><span class='line'>    <span class="vi">@year</span><span class="o">=</span> <span class="n">year</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">drive</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Vrooom!&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And now you decide you’re ready to create a new car so you can get ready to take it for a spin with the following code:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Car</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;Renault&quot;</span><span class="p">,</span> <span class="s2">&quot;LeCar&quot;</span><span class="p">,</span>  <span class="mi">1979</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Renault LeCar? Nice choice! Now, let’s ride. But wait, you forgot to assign your new car to a variable.  Dude, where’s your car?</p>
+
+<p>Well, as it turns out, it’s not actually gone.  It just requires a little snooping around to get it back.  Ruby comes packaged with a module called <a href="http://ruby-doc.org/core-2.2.0/ObjectSpace.html">ObjectSpace</a> which contains a useful method #each_object to aid in the search.  ObjectSpace interacts with Ruby’s garbage collection facility which helps manage Ruby’s memory. Calling #each_object and passing in your class in question will allow you to find all living objects of that particular class (assigned to a variable or not):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">ObjectSpace</span><span class="o">.</span><span class="n">each_object</span><span class="p">(</span><span class="no">Car</span><span class="p">){</span><span class="o">|</span><span class="n">car</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">car</span><span class="o">.</span><span class="n">object_id</span><span class="p">}</span>
+</span><span class='line'><span class="c1">#IRB output</span>
+</span><span class='line'>  <span class="c1">#70206505370260</span>
+</span><span class='line'>  <span class="c1">#=&gt; 1</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Ruby returns to you the number of objects in the Car class ‘1’ and your missing car’s object id, provided you #puts it (70206505370260).  If you had a bunch of objects in that class instead of just one like we do, you could pass in the value of a particular instance variable of your object in question into the block through an if statement to narrow down your search.</p>
+
+<p>But I digress. Now that you are armed with this information, you can use another method in ObjectSpace called #_id2ref which converts an object id into a direct reference to the object to finally track down your car and save it:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">lecar</span> <span class="o">=</span> <span class="no">ObjectSpace</span><span class="o">.</span><span class="n">_id2ref</span><span class="p">(</span><span class="mi">70206505370260</span><span class="p">)</span>
+</span><span class='line'><span class="c1">#IRB output</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="c1">#&lt;Car:0x007fb473a08528 @make=&quot;Renault&quot;, </span>
+</span><span class='line'><span class="c1">#@model=&quot;LeCar&quot;, @year=1979&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">lecar</span><span class="o">.</span><span class="n">drive</span> <span class="o">==&gt;</span> <span class="s2">&quot;Vroom!&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Way to go! You even remembered to store your car to a variable this time so this will not happen again. Jesse and Chester would be proud.</p>
+
+<div class="embed-video-container"><iframe src="//www.youtube.com/embed/THCQ3CaMlB8" allowfullscreen></iframe></div>
+
+
+<p>Now, if you want to have some more fun, ever wonder what other objects Ruby has hidden under the rug? Try this line of code in IRB sometime to see what strings Ruby currently has in memory. It yielded an array of 23,157 strings I did not know about!</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">strings_array</span> <span class="o">=</span> <span class="o">[</span> <span class="o">]</span>
+</span><span class='line'><span class="no">ObjectSpace</span><span class="o">.</span><span class="n">each_object</span><span class="p">(</span><span class="nb">String</span><span class="p">){</span><span class="o">|</span><span class="n">string</span><span class="o">|</span> <span class="n">strings_array</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="no">ObjectSpace</span><span class="o">.</span><span class="n">_id2ref</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">object_id</span><span class="p">))}</span>
+</span><span class='line'><span class="n">strings_array</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>What’s yours say? SWEET!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2015/06/14/my-first-post-on-octopress/">A (New) Programmer’s Musings</a></h1>
     
     
@@ -119,6 +232,10 @@ I really dig this concept.  When I was trying to figure out what programming lan
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/06/23/dude/">Dude, Where's My Object?</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/06/14/my-first-post-on-octopress/">A (New) Programmer’s Musings</a>
