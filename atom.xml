@@ -4,7 +4,7 @@
   <title><![CDATA[Travis Emmett's blog]]></title>
   <link href="http://travisje.github.io/atom.xml" rel="self"/>
   <link href="http://travisje.github.io/"/>
-  <updated>2015-07-13T08:29:20-04:00</updated>
+  <updated>2015-07-13T09:31:31-04:00</updated>
   <id>http://travisje.github.io/</id>
   <author>
     <name><![CDATA[Travis Emmett]]></name>
@@ -43,7 +43,7 @@
 
 <p>The second argument in text_field_tag is responsible for pre filling in the value of the existing record (which you&rsquo;ll notice is filled in below) in order to submit an update.</p>
 
-<h1><h4> Outputted HTML </h4></h1>
+<h1><h4> Outputted HTML:</h4></h1>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -60,7 +60,7 @@
 
 
 
-<h4> Params content</h4>
+<h4> Params content:</h4>
 
 
 <p>And here is the content of the params hash after submission of the form:</p>
@@ -123,10 +123,10 @@
 
 
 
-<p>Note that this same form can also be used for the purposes of editing a baby record and Rails will update the values and actions for you. And also note the amazing number of assumptions Rails has made for you about your form!</p>
+<p>Note that this same form can also be used for the purposes of editing a baby record and Rails will update the values and actions for you. And also note the amazing number of assumptions Rails has made for you about your form! Based on the view that the form_for is added to, Rails guesses correctly via the form builder object the method (post), the name of the submit button (create baby), the desired nesting of data in the params hash for mass assignment (baby[first_name] and baby[birth_date]), among other things.</p>
 
 
-<h1><h4> Outputted HTML </h4></h1>
+<h1><h4> Outputted HTML:</h4></h1>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -147,7 +147,7 @@
 
 
 
-<h4> Params content</h4>
+<h4> Params content:</h4>
 
 
 <pre><code class="Ruby">{"utf8"=&gt;"✓",
