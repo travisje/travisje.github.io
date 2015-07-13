@@ -4,7 +4,7 @@
   <title><![CDATA[Travis Emmett's blog]]></title>
   <link href="http://travisje.github.io/atom.xml" rel="self"/>
   <link href="http://travisje.github.io/"/>
-  <updated>2015-06-26T08:19:09-04:00</updated>
+  <updated>2015-07-13T08:29:20-04:00</updated>
   <id>http://travisje.github.io/</id>
   <author>
     <name><![CDATA[Travis Emmett]]></name>
@@ -12,6 +12,156 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[What's a Form_for, or for That Matter, a Form_tag?]]></title>
+    <link href="http://travisje.github.io/blog/2015/07/13/wheres/"/>
+    <updated>2015-07-13T20:03:53-04:00</updated>
+    <id>http://travisje.github.io/blog/2015/07/13/wheres</id>
+    <content type="html"><![CDATA[<p> Last week I was introduced to the magic that is various form builder methods in Rails. It was fairly intimidating to me because I am sort of a control freak and Rails makes a number of assumptions behind the scenes as to what you are trying to do. It's like Ruby on steroids. So, in case you are looking for a quick reference to these tags, here are a few briefly explained:</p>
+
+
+
+
+<h3> form_tag </h3>
+
+
+<p>form_tag is an ActionView helper method that follows the url provided to it and defaults to the POST method unless you specify otherwise. Here we are specifying a PATCH action in order to update a record:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='Ruby'><span class='line'><span class="o">&lt;</span><span class="sx">%= form_tag(&quot;/concretes/</span><span class="si">#{</span><span class="vi">@concrete</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="sx">&quot;, :method =</span><span class="o">&gt;</span> <span class="s1">&#39;patch&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx">&lt;%= label_tag (&quot;mix type&quot;) %&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sx">%= text_field_tag(&#39;concrete[mix_type]&#39;, @concrete.mix_type) %&gt;</span>
+</span><span class='line'><span class="sx">&lt;%=</span> <span class="n">submit_tag</span> <span class="s2">&quot;Update Concrete&quot;</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx">&lt;% end %&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The second argument in text_field_tag is responsible for pre filling in the value of the existing record (which you&rsquo;ll notice is filled in below) in order to submit an update.</p>
+
+<h1><h4> Outputted HTML </h4></h1>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='HTML'><span class='line'><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;/concretes/1&quot;</span> <span class="na">accept-charset=</span><span class="s">&quot;UTF-8&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span><span class="nt">&gt;&lt;input</span> <span class="na">name=</span><span class="s">&quot;utf8&quot;</span> <span class="na">type=</span><span class="s">&quot;hidden&quot;</span> <span class="na">value=</span><span class="s">&quot;✓&quot;</span><span class="nt">&gt;&lt;input</span> <span class="na">type=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name=</span><span class="s">&quot;_method&quot;</span> <span class="na">value=</span><span class="s">&quot;patch&quot;</span><span class="nt">&gt;&lt;input</span> <span class="na">type=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name=</span><span class="s">&quot;authenticity_token&quot;</span> <span class="na">value=</span><span class="s">&quot;aBUUH4T65nmHGLS/uATo5yNttcsWRW8gpyrV4MvPEDbfOKWuqmC498fV8r9WAYHBBvHQOBNctaeeLqcuk27iRQ==&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;mix_type&quot;</span><span class="nt">&gt;</span>Mix type<span class="nt">&lt;/label&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;concrete[mix_type]&quot;</span> <span class="na">id=</span><span class="s">&quot;concrete_mix_type&quot;</span> <span class="na">value=</span><span class="s">&quot;stone&quot;</span> <span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">name=</span><span class="s">&quot;commit&quot;</span> <span class="na">value=</span><span class="s">&quot;Update Concrete&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;/form&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<h4> Params content</h4>
+
+
+<p>And here is the content of the params hash after submission of the form:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='Ruby'><span class='line'><span class="p">{</span><span class="s2">&quot;utf8&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;✓&quot;</span><span class="p">,</span>
+</span><span class='line'> <span class="s2">&quot;_method&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;patch&quot;</span><span class="p">,</span>
+</span><span class='line'> <span class="s2">&quot;authenticity_token&quot;</span><span class="o">=&gt;</span>
+</span><span class='line'>  <span class="s2">&quot;aBUUH4T65nmHGLS/uATo5yNttcsWRW8gpyrV4MvPEDbfOKWuqmC498fV8r9WAYHBBvHQOBNctaeeLqcuk27iRQ==&quot;</span><span class="p">,</span>
+</span><span class='line'> <span class="s2">&quot;concrete&quot;</span><span class="o">=&gt;</span>
+</span><span class='line'>  <span class="p">{</span><span class="s2">&quot;mix_type&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;stone&quot;</span><span class="p">},</span>
+</span><span class='line'> <span class="s2">&quot;commit&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;Update Concrete&quot;</span><span class="p">,</span>
+</span><span class='line'> <span class="s2">&quot;controller&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;concretes&quot;</span><span class="p">,</span>
+</span><span class='line'> <span class="s2">&quot;action&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;update&quot;</span><span class="p">,</span>
+</span><span class='line'> <span class="s2">&quot;id&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;1&quot;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<h3>form_for</h3>
+
+
+
+
+<p>form_for is another ActionView helper method that offers an additional level of abstraction (and ease) over it's lower level form_tag counterpart. This is a good approach to take if you are practicing the Rails convention of RESTful routing and you are using a standard active record object, in this case an instance of the Baby class. Because Rails makes so many assumptions, it is good practice to still double check your data is being routed correctly. Below is a simple illustration of entering a new baby name in a database: </p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='Ruby'><span class='line'><span class="o">&lt;</span><span class="sx">%= form_for (@baby) do |f| %&gt;</span>
+</span><span class='line'><span class="sx">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">label</span> <span class="ss">:first_name</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx">&lt;%= f.text_field :first_name %&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="sx">%= f.label :birth_date %&gt;</span>
+</span><span class='line'><span class="sx">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">date_field</span> <span class="ss">:birth_date</span> <span class="sx">%&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">&lt;%= f.submit %&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sx">% end </span><span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>Note that this same form can also be used for the purposes of editing a baby record and Rails will update the values and actions for you. And also note the amazing number of assumptions Rails has made for you about your form!</p>
+
+
+<h1><h4> Outputted HTML </h4></h1>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='HTML'><span class='line'><span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">&quot;new_baby&quot;</span> <span class="na">id=</span><span class="s">&quot;new_baby&quot;</span> <span class="na">action=</span><span class="s">&quot;/babies&quot;</span> <span class="na">accept-charset=</span><span class="s">&quot;UTF-8&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="na">_lpchecked=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;&lt;input</span> <span class="na">name=</span><span class="s">&quot;utf8&quot;</span> <span class="na">type=</span><span class="s">&quot;hidden&quot;</span> <span class="na">value=</span><span class="s">&quot;✓&quot;</span><span class="nt">&gt;&lt;input</span> <span class="na">type=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name=</span><span class="s">&quot;authenticity_token&quot;</span> <span class="na">value=</span><span class="s">&quot;6/3miTvGAxS4pv3D2/zQU8iLYnwDB1wDaYC6e7qDknNc0Fc4FVxdmvhru8M1+bl17RcHjwYehoRQhMi14iJgAA==&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;baby_first_name&quot;</span><span class="nt">&gt;</span>First name<span class="nt">&lt;/label&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;baby[first_name]&quot;</span> <span class="na">id=</span><span class="s">&quot;baby_first_name&quot;</span> <span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;baby_birth_date&quot;</span><span class="nt">&gt;</span>Birth date<span class="nt">&lt;/label&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;date&quot;</span> <span class="na">name=</span><span class="s">&quot;baby[birth_date]&quot;</span> <span class="na">id=</span><span class="s">&quot;baby_birth_date&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">name=</span><span class="s">&quot;commit&quot;</span> <span class="na">value=</span><span class="s">&quot;Create Baby&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;/form&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<h4> Params content</h4>
+
+
+<pre><code class="Ruby">{"utf8"=&gt;"✓",
+ "authenticity_token"=&gt;
+  "6/3miTvGAxS4pv3D2/zQU8iLYnwDB1wDaYC6e7qDknNc0Fc4FVxdmvhru8M1+bl17RcHjwYehoRQhMi14iJgAA==",
+ "baby"=&gt;
+  {"first_name"=&gt;"Brandnew",
+   "birth_date"=&gt;"2015-07-13"},
+ "commit"=&gt;"Create Baby",
+ "controller"=&gt;"babies",
+ "action"=&gt;"create"}
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Dude, Where's My Object?]]></title>
