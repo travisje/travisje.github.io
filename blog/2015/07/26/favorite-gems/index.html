@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>A Few Favorite Gems... - Travis Emmett's blog</title>
+  <meta name="author" content="Travis Emmett">
+
+  
+  <meta name="description" content="Along my journey of learning Rails, I thought it would be helpful for beginners if I listed a few of the indispensable gems I have come across. &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://travisje.github.io/blog/2015/07/26/favorite-gems/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Travis Emmett's blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Travis Emmett's blog</a></h1>
+  
+    <h2>A coder in training's thoughts</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="travisje.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">A Few Favorite Gems...</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-26T20:03:53-04:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>8:03 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p> Along my journey of learning Rails, I thought it would be helpful for beginners if I listed a few of the indispensable gems I have come across. Before I started developing in Ruby, I would always hear people talking about 'gems' but not really have a firm grasp on what a gem actually was.  A gem is basically a library or plug-in that provides some additional functionality that you can require your application to load every time it is run. They are incredibly helpful because they allow the developer to focus on building out the unique parts of an application, rather than reinventing the wheel each time. <a href='https://rubygems.org/'>Rubygems.org</a> is the main repository of Ruby gems (there are over 6,650 gems listed currently) but <a href='https://www.ruby-toolbox.com/'>Ruby Toolbox</a> is also a great resource because it breaks gems down by category. So, in no specific order, here are just a few of my favorites: </p>
+
+
+
+
+<h3>Rails ERD</h3>
+
+
+<p> I love <a href = 'http://rails-erd.rubyforge.org/'> Rails ERD</a>. I think there's a tendency when coding to discount visual representations of data and logic for the text editor. While parsing code and relational data mentally is great, I think drawing it out is very important because it allows you to get a more complete understanding of how your data is really interacting with each other. Rails ERD utilizes Graphviz, an open source visualization library, to visualize your Active Record database schema and their relationships (which is probably an over fancy way of saying it let you visualize your database). It renders a nice pdf of your database schema and here is an example below:</p>
+
+
+<p><img class="left" src="/images/rails-erd.png"></p>
+
+<p>Note that Rails ERD requires Graphviz to be installed on your system and detailed instructions can be found <a href = 'http://rails-erd.rubyforge.org/install.html'>here</a>.  Once installed, you can type simply "erd" in your console and find the rendered file in your project's main directory under erd.pdf.
+</p>
+
+
+
+
+<h3>Faker</h3>
+
+
+<p><p><a href='https://github.com/stympy/faker'>Faker</a> is a really fun gem to play with. Sooner or later, your applications will get to the size where your databases need a bunch of realistic data to test with. Faker will supply a huge variety of data with which to construct example seed data. So, for instance, in place of making up a street address yourself, you could specify Faker::Address.street_address and it would provide you an example address like &ldquo;282 Kevin Brook&rdquo;. It has tons of different kinds of sample data available. Some of the more interesting ones: Avatar images, company slogans, and of course sample bitcoin addresses for all you Internet currency junkies. Here&rsquo;s a quick example of creating a new Person entry in your database with Faker:</p>
+
+<p><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='Ruby'><span class='line'><span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+</span><span class='line'>  <span class="ss">:first_name</span>   <span class="o">=&gt;</span> <span class="no">Faker</span><span class="o">::</span><span class="no">Name</span><span class="o">.</span><span class="n">first_name</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:last_name</span>    <span class="o">=&gt;</span> <span class="no">Faker</span><span class="o">::</span><span class="no">Name</span><span class="o">.</span><span class="n">last_name</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:email</span>        <span class="o">=&gt;</span> <span class="no">Faker</span><span class="o">::</span><span class="no">Internet</span><span class="o">.</span><span class="n">email</span>
+</span><span class='line'><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p><h3>Figaro</h3>
+<p><a href='https://github.com/laserlemon/figaro'>Figaro</a> is an extremely helpful gem when you begin utilizing API&rsquo;s in your applications.  If you are using a public GitHub account in the development of your project, once you supply your API key inside of your application, you want to make sure GitHub does not remember this file, lest it be found by a malicious user.  This is where Figaro comes in handy and makes the process very easy. As the steps were a little confusing online when I began using it, assuming you are building a Rails application, here is an example implementation that worked for me:<br><br>
+1. Add &ldquo;gem &lsquo;figaro&rsquo;&rdquo; to your gemfile in your Rails application<br><br>
+2. Type &ldquo;bundle install&rdquo; in your console<br><br>
+3. Then type &ldquo;figaro install&rdquo; in your console. This will create a file in your config folder called application.yml where we will save the API key.  This will also add an entry for application.yml in your .gitignore file so git will not push it to GitHub (be aware when working with any team members they will also have to perform these steps in order to use the API)<br><br>
+4. Go into your config/application.yml file created by Figaro in the previous step and enter your api key. There are different ways to do this but in the recent project I worked on, we chose to enter our key like this:<br>
+weather_api: &ldquo;f0403B7e04110UI15c&rdquo;<br><br>
+5. Then, find the place in your application (usually within your API&rsquo;s model class) where you are making the request to the api for data, and save the api key to a variable:<br>
+api_key = ENV[&ldquo;weather_api&rdquo;]<br><br>
+Voila, you now have access to your api key from the variable api_key without it ever appearing on GitHub!
+</p></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Travis Emmett</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-07-26T20:03:53-04:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>8:03 pm</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://travisje.github.io/blog/2015/07/26/favorite-gems/" data-via="" data-counturl="http://travisje.github.io/blog/2015/07/26/favorite-gems/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/07/13/form_for/" title="Previous Post: What's a form_for, or for that matter, a form_tag? Some examples...">&laquo; What's a form_for, or for that matter, a form_tag? Some examples...</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2015/08/08/testing/" title="Next Post: A beginner's testing example...">A beginner's testing example... &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/08/08/testing/">A Beginner's Testing Example...</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/07/26/favorite-gems/">A Few Favorite Gems...</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/07/13/form_for/">What's a Form_for, or for That Matter, a Form_tag? Some Examples...</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/06/28/dude/">Dude, Where's My Object?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/06/14/my-first-post-on-octopress/">A (New) Programmer’s Musings</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Travis Emmett -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

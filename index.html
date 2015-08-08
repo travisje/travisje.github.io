@@ -9,7 +9,7 @@
   <meta name="author" content="Travis Emmett">
 
   
-  <meta name="description" content="Last week I was introduced to the magic that is various form builder methods in Rails. It was fairly intimidating to me because I am sort of a &hellip;">
+  <meta name="description" content="Ok, so I have a confession to make. I have been avoiding spec testing like the plague. I mean, it&rsquo;s just so much fun be in the world of &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,7 +71,113 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2015/07/13/wheres/">What's a Form_for, or for That Matter, a Form_tag?</a></h1>
+      <h1 class="entry-title"><a href="/blog/2015/08/08/testing/">A Beginner's Testing Example...</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-08-08T20:03:53-04:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>8:03 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><p>Ok, so I have a confession to make. I have been avoiding spec testing like the plague. I mean, it&rsquo;s just so much fun be in the world of invention, where each keystroke heralds in a new feature or possibility. But, as we are in the second week of a project mode, I&rsquo;ve realized that this fantasy quickly breaks down and becomes a nightmare. We recently had a speaker come in to Flatiron and tell us that he would never work for a company that didn&rsquo;t perform tests and now I get it.</p>
+
+<p><p> I am currently working on a fun app with my team that allows individuals to challenge each other in any type of competition and allows users of the site to vote on who wins. We&rsquo;ve been building out various features on it, and have refactored our code, added more features, and then realized that a good chunk of our existing application was broken after the fact. So, I thoght now would be a good time to try to learn a few basics of testing. More to come soon!</p></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/26/favorite-gems/">A Few Favorite Gems...</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-26T20:03:53-04:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>8:03 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p> Along my journey of learning Rails, I thought it would be helpful for beginners if I listed a few of the indispensable gems I have come across. Before I started developing in Ruby, I would always hear people talking about 'gems' but not really have a firm grasp on what a gem actually was.  A gem is basically a library or plug-in that provides some additional functionality that you can require your application to load every time it is run. They are incredibly helpful because they allow the developer to focus on building out the unique parts of an application, rather than reinventing the wheel each time. <a href='https://rubygems.org/'>Rubygems.org</a> is the main repository of Ruby gems (there are over 6,650 gems listed currently) but <a href='https://www.ruby-toolbox.com/'>Ruby Toolbox</a> is also a great resource because it breaks gems down by category. So, in no specific order, here are just a few of my favorites: </p>
+
+
+
+
+<h3>Rails ERD</h3>
+
+
+<p> I love <a href = 'http://rails-erd.rubyforge.org/'> Rails ERD</a>. I think there's a tendency when coding to discount visual representations of data and logic for the text editor. While parsing code and relational data mentally is great, I think drawing it out is very important because it allows you to get a more complete understanding of how your data is really interacting with each other. Rails ERD utilizes Graphviz, an open source visualization library, to visualize your Active Record database schema and their relationships (which is probably an over fancy way of saying it let you visualize your database). It renders a nice pdf of your database schema and here is an example below:</p>
+
+
+<p><img class="left" src="/images/rails-erd.png"></p>
+
+<p>Note that Rails ERD requires Graphviz to be installed on your system and detailed instructions can be found <a href = 'http://rails-erd.rubyforge.org/install.html'>here</a>.  Once installed, you can type simply "erd" in your console and find the rendered file in your project's main directory under erd.pdf.
+</p>
+
+
+
+
+<h3>Faker</h3>
+
+
+<p><p><a href='https://github.com/stympy/faker'>Faker</a> is a really fun gem to play with. Sooner or later, your applications will get to the size where your databases need a bunch of realistic data to test with. Faker will supply a huge variety of data with which to construct example seed data. So, for instance, in place of making up a street address yourself, you could specify Faker::Address.street_address and it would provide you an example address like &ldquo;282 Kevin Brook&rdquo;. It has tons of different kinds of sample data available. Some of the more interesting ones: Avatar images, company slogans, and of course sample bitcoin addresses for all you Internet currency junkies. Here&rsquo;s a quick example of creating a new Person entry in your database with Faker:</p>
+
+<p><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='Ruby'><span class='line'><span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+</span><span class='line'>  <span class="ss">:first_name</span>   <span class="o">=&gt;</span> <span class="no">Faker</span><span class="o">::</span><span class="no">Name</span><span class="o">.</span><span class="n">first_name</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:last_name</span>    <span class="o">=&gt;</span> <span class="no">Faker</span><span class="o">::</span><span class="no">Name</span><span class="o">.</span><span class="n">last_name</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:email</span>        <span class="o">=&gt;</span> <span class="no">Faker</span><span class="o">::</span><span class="no">Internet</span><span class="o">.</span><span class="n">email</span>
+</span><span class='line'><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p><h3>Figaro</h3>
+<p><a href='https://github.com/laserlemon/figaro'>Figaro</a> is an extremely helpful gem when you begin utilizing API&rsquo;s in your applications.  If you are using a public GitHub account in the development of your project, once you supply your API key inside of your application, you want to make sure GitHub does not remember this file, lest it be found by a malicious user.  This is where Figaro comes in handy and makes the process very easy. As the steps were a little confusing online when I began using it, assuming you are building a Rails application, here is an example implementation that worked for me:<br><br>
+1. Add &ldquo;gem &lsquo;figaro&rsquo;&rdquo; to your gemfile in your Rails application<br><br>
+2. Type &ldquo;bundle install&rdquo; in your console<br><br>
+3. Then type &ldquo;figaro install&rdquo; in your console. This will create a file in your config folder called application.yml where we will save the API key.  This will also add an entry for application.yml in your .gitignore file so git will not push it to GitHub (be aware when working with any team members they will also have to perform these steps in order to use the API)<br><br>
+4. Go into your config/application.yml file created by Figaro in the previous step and enter your api key. There are different ways to do this but in the recent project I worked on, we chose to enter our key like this:<br>
+weather_api: &ldquo;f0403B7e04110UI15c&rdquo;<br><br>
+5. Then, find the place in your application (usually within your API&rsquo;s model class) where you are making the request to the api for data, and save the api key to a variable:<br>
+api_key = ENV[&ldquo;weather_api&rdquo;]<br><br>
+Voila, you now have access to your api key from the variable api_key without it ever appearing on GitHub!
+</p></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/13/form_for/">What's a Form_for, or for That Matter, a Form_tag? Some Examples...</a></h1>
     
     
       <p class="meta">
@@ -87,15 +193,21 @@
   </header>
 
 
-  <div class="entry-content"><p> Last week I was introduced to the magic that is various form builder methods in Rails. It was fairly intimidating to me because I am sort of a control freak and Rails makes a number of assumptions behind the scenes as to what you are trying to do. It's like Ruby on steroids. So, in case you are looking for a quick reference to these tags, here are a few briefly explained:</p>
+  <div class="entry-content"><p> Last week I was introduced to the magic that are the various form builder methods in Rails. It was a little intimidating to me because I am sort of a control freak with my code and Rails makes a number of assumptions behind the scenes as to what you are trying to do. But it's also amazing because with that automation, you can say goodbye to writing out html forms manually and these methods can be very smart. There is a ton of documentation online which is a great resource, but I was a little frustrated that it was hard to find an example all in one spot of a form's ruby code, the html output, what the form looked like on a web page, and the corresponding params hash sent on submission of the form.</p>
+
+
+<p>So, in case you are looking for a quick reference to these tags, here are a few briefly explained:</p>
 
 
 
 
-<h3> form_tag </h3>
+<h2> form_tag </h2>
 
 
-<p>form_tag is an ActionView helper method that follows the url provided to it and defaults to the POST method unless you specify otherwise. Here we are specifying a PATCH action in order to update a record:</p>
+<p>The <a href= 'http://api.rubyonrails.org/classes/ActionView/Helpers/FormTagHelper.html#method-i-form_tag'>form_tag</a> is an ActionView helper method that follows the url provided to it and defaults to the POST method unless you specify otherwise. Here we are specifying a PATCH action in order to update a record:</p>
+
+
+<h1><h4>views/concretes/edit.html.erb:</h4></h1>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -119,7 +231,11 @@
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='HTML'><span class='line'><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;/concretes/1&quot;</span> <span class="na">accept-charset=</span><span class="s">&quot;UTF-8&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span><span class="nt">&gt;&lt;input</span> <span class="na">name=</span><span class="s">&quot;utf8&quot;</span> <span class="na">type=</span><span class="s">&quot;hidden&quot;</span> <span class="na">value=</span><span class="s">&quot;✓&quot;</span><span class="nt">&gt;&lt;input</span> <span class="na">type=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name=</span><span class="s">&quot;_method&quot;</span> <span class="na">value=</span><span class="s">&quot;patch&quot;</span><span class="nt">&gt;&lt;input</span> <span class="na">type=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name=</span><span class="s">&quot;authenticity_token&quot;</span> <span class="na">value=</span><span class="s">&quot;aBUUH4T65nmHGLS/uATo5yNttcsWRW8gpyrV4MvPEDbfOKWuqmC498fV8r9WAYHBBvHQOBNctaeeLqcuk27iRQ==&quot;</span><span class="nt">&gt;</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='HTML'><span class='line'><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;/concretes/1&quot;</span> <span class="na">accept-charset=</span><span class="s">&quot;UTF-8&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">&quot;utf8&quot;</span> <span class="na">type=</span><span class="s">&quot;hidden&quot;</span> <span class="na">value=</span><span class="s">&quot;✓&quot;</span><span class="nt">&gt;&lt;input</span> <span class="na">type=</span><span class="s">&quot;hidden&quot;</span>
+</span><span class='line'><span class="na">name=</span><span class="s">&quot;_method&quot;</span> <span class="na">value=</span><span class="s">&quot;patch&quot;</span><span class="nt">&gt;&lt;input</span> <span class="na">type=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name=</span><span class="s">&quot;authenticity_token&quot;</span> <span class="na">value=</span><span class="s">&quot;aBUUH4T65nmHGLS/uATo5yNttcsWRW8gpyrV4MvPEDbfOKWuqmC498fV8r9WAYHBBvHQOBNctaeeLqcuk27iRQ==&quot;</span><span class="nt">&gt;</span>
 </span><span class='line'><span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;mix_type&quot;</span><span class="nt">&gt;</span>Mix type<span class="nt">&lt;/label&gt;</span>
 </span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;concrete[mix_type]&quot;</span> <span class="na">id=</span><span class="s">&quot;concrete_mix_type&quot;</span> <span class="na">value=</span><span class="s">&quot;stone&quot;</span> <span class="nt">&gt;</span>
 </span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">name=</span><span class="s">&quot;commit&quot;</span> <span class="na">value=</span><span class="s">&quot;Update Concrete&quot;</span><span class="nt">&gt;</span>
@@ -163,17 +279,20 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-
-
-<h3>form_for</h3>
+<p>This params hash could then be intercepted in the concretes controller's update method where you would save the changes to the existing record.</p>
 
 
 
 
-<p>form_for is another ActionView helper method that offers an additional level of abstraction (and ease) over it's lower level form_tag counterpart. This is a good approach to take if you are practicing the Rails convention of RESTful routing and you are using a standard active record object, in this case an instance of the Baby class. Because Rails makes so many assumptions, it is good practice to still double check your data is being routed correctly. Below is a simple illustration of entering a new baby name in a database: </p>
+<h2>form_for</h2>
 
 
 
+
+<p>The <a href='http://api.rubyonrails.org/classes/ActionView/Helpers/FormHelper.html'>form_for</a> method is another ActionView helper that offers an additional level of abstraction (and ease) over it's lower level form_tag counterpart. This is a good approach to take if you are practicing the Rails convention of RESTful routing and you are using a standard active record object, in this case an instance of the Baby class. Because Rails makes so many assumptions about your form, it is good practice to still double check your data is being routed correctly. Below is a basic illustration of entering a new baby name in a database: </p>
+
+
+<h1><h4>views/babies/new.html.erb:</h4></h1>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -198,7 +317,7 @@
 
 
 
-<p>Note that this same form can also be used for the purposes of editing a baby record and Rails will update the values and actions for you. And also note the amazing number of assumptions Rails has made for you about your form! Based on the view that the form_for is added to, Rails guesses correctly via the form builder object the method (post), the name of the submit button (create baby), the desired nesting of data in the params hash for mass assignment (baby[first_name] and baby[birth_date]), among other things.</p>
+<p>Note the amazing number of assumptions Rails has made about your form! Based on the view type that the form_for is added to (in this case our new Baby view), Rails guesses correctly the method (post), the name of the submit button (Create Baby), the desired nesting of data in the params hash for mass assignment ease -- baby[first_name] and baby[birth_date], among other things.</p>
 
 
 <h1><h4> Outputted HTML:</h4></h1>
@@ -210,7 +329,13 @@
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='HTML'><span class='line'><span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">&quot;new_baby&quot;</span> <span class="na">id=</span><span class="s">&quot;new_baby&quot;</span> <span class="na">action=</span><span class="s">&quot;/babies&quot;</span> <span class="na">accept-charset=</span><span class="s">&quot;UTF-8&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="na">_lpchecked=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;&lt;input</span> <span class="na">name=</span><span class="s">&quot;utf8&quot;</span> <span class="na">type=</span><span class="s">&quot;hidden&quot;</span> <span class="na">value=</span><span class="s">&quot;✓&quot;</span><span class="nt">&gt;&lt;input</span> <span class="na">type=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name=</span><span class="s">&quot;authenticity_token&quot;</span> <span class="na">value=</span><span class="s">&quot;6/3miTvGAxS4pv3D2/zQU8iLYnwDB1wDaYC6e7qDknNc0Fc4FVxdmvhru8M1+bl17RcHjwYehoRQhMi14iJgAA==&quot;</span><span class="nt">&gt;</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='HTML'><span class='line'><span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">&quot;new_baby&quot;</span> <span class="na">id=</span><span class="s">&quot;new_baby&quot;</span> <span class="na">action=</span><span class="s">&quot;/babies&quot;</span> <span class="na">accept-charset=</span><span class="s">&quot;UTF-8&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span>
+</span><span class='line'><span class="na">_lpchecked=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;&lt;input</span> <span class="na">name=</span><span class="s">&quot;utf8&quot;</span> <span class="na">type=</span><span class="s">&quot;hidden&quot;</span> <span class="na">value=</span><span class="s">&quot;✓&quot;</span><span class="nt">&gt;&lt;input</span> <span class="na">type=</span><span class="s">&quot;hidden&quot;</span>
+</span><span class='line'><span class="na">name=</span><span class="s">&quot;authenticity_token&quot;</span> <span class="na">value=</span><span class="s">&quot;6/3miTvGAxS4pv3D2/</span>
+</span><span class='line'><span class="s">zQU8iLYnwDB1wDaYC6e7qDknNc0Fc4FVxdmvhru8M1+bl17RcHjwYehoRQhMi14iJgAA==&quot;</span><span class="nt">&gt;</span>
 </span><span class='line'><span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;baby_first_name&quot;</span><span class="nt">&gt;</span>First name<span class="nt">&lt;/label&gt;</span>
 </span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;baby[first_name]&quot;</span> <span class="na">id=</span><span class="s">&quot;baby_first_name&quot;</span> <span class="nt">&gt;</span>
 </span><span class='line'><span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;baby_birth_date&quot;</span><span class="nt">&gt;</span>Birth date<span class="nt">&lt;/label&gt;</span>
@@ -222,7 +347,9 @@
 
 <h1><h4> Example form (non functioning):</h4></h1>
 
-<p><form class="new_baby" id="new_baby" action="/babies" accept-charset="UTF-8" method="post" _lpchecked="1"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="6/3miTvGAxS4pv3D2/zQU8iLYnwDB1wDaYC6e7qDknNc0Fc4FVxdmvhru8M1+bl17RcHjwYehoRQhMi14iJgAA==">
+<p><form class="new_baby" id="new_baby" action="/babies" accept-charset="UTF-8"
+method="post" _lpchecked="1"><input name="utf8" type="hidden" value="✓">
+<input type="hidden" name="authenticity_token" value="6/3miTvGAxS4pv3D2/zQU8iLYnwDB1wDaYC6e7qDknNc0Fc4FVxdmvhru8M1+bl17RcHjwYehoRQhMi14iJgAA==">
 <label for="baby_first_name">First name</label>
 <input type="text" name="baby[first_name]" id="baby_first_name" >
 <label for="baby_birth_date">Birth date</label>
@@ -243,6 +370,9 @@
  "controller"=&gt;"babies",
  "action"=&gt;"create"}
 </code></pre>
+
+<p>This params hash could then be intercepted in the babies controller's create method where you would add the data from the params hash to the database.</p>
+
 </div>
   
   
@@ -255,7 +385,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2015/06/23/dude/">Dude, Where's My Object?</a></h1>
+      <h1 class="entry-title"><a href="/blog/2015/06/28/dude/">Dude, Where's My Object?</a></h1>
     
     
       <p class="meta">
@@ -264,7 +394,7 @@
 
 
 
-<time class='entry-date' datetime='2015-06-23T20:03:53-04:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>8:03 pm</span></time>
+<time class='entry-date' datetime='2015-06-28T20:03:53-04:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>8:03 pm</span></time>
         
       </p>
     
@@ -388,16 +518,24 @@
 
 <p>Week two has just wrapped up on my wild and crazy journey that is The Flatiron School.  I feel really lucky to be here and to be surrounded by such smart folks, and even more lucky that in a few months time I might be able to work somewhere as a full time web developer.</p>
 
-<p>As a relative newcomer to the programming field, I’ve found myself wondering about various aspects of the field that I’ve either taken for granted or never thought that much about before.  My aim is to use this a tool to investigate these things further. To the veteran CS professional or developer, these may likely seem like unoriginal questions coupled with misguided intuitions, but hey, it’s a blog so I get to do what I want! ;)</p>
+<p>As a relative newcomer to the programming field, I’ve found myself wondering about various aspects of the field that I’ve either taken for granted or never thought that much about before. To the veteran CS professional or developer, these may likely seem like unoriginal questions coupled with perhaps misguided musings, but hey, it’s my blog so I get to do what I want! ;)</p>
 
 <p>And, since I’ve always had more fun asking questions than answering them, here are some of the things I’ve been thinking in no specific order:</p>
 
-<p>It seems like the number of programming languages is increasing more rapidly as time goes on, as opposed to human language which is converging around one. Is this an indication that we are still very early in the computer revolution? Or perhaps an indication that the two things are very different from each other? Perhaps this isn’t an appropriate comparison, but it’s something that piques my interest.</p>
+<h3>Why are there so many languages?</h3>
 
-<p>Ruby as a language for people, instead of computers:
-I really dig this concept.  When I was trying to figure out what programming language to learn, I remember trying one that required like 5 lines to add 2 +2.  While I can understand various loyalties people have towards one language or another (I also think there can be a natural tendency for this the more difficult something is), it seems to me there is something very powerful in a flexible language that makes it easy to express yourself simply without obfuscation. The easier something is to express, implement, and understand, the more opportunity there is for trial and error and experimentation, something I think crucial to invention and making anything better. After all, as our instructor Avi Flombaum has mentioned, the human brain can only process a limited amount of data (around 60 bits per second) when making a decision, so why not leave as much of this power as possible to devise better ways to perform the task at hand than to comprehend the instructions in the first place?</p>
 
-<p>I also wonder where this takes you if you follow the premise of this argument further. Are there inefficiencies of the spoken and written word that perhaps could allow for even more powerful languages to emerge? Perhaps there’s a sort of programming equivalent that allows for comprehension on multiple levels at once, like Charles Joseph Minard’s famous info graphic charting <a href="https://en.wikipedia.org/?title=Charles_Joseph_Minard"> Napoleon’s disastrous march through Russia in 1812</a>. I&rsquo;m definitely not smart enough to answer this question, but it’s something I’ve been thinking about and look forward to looking into further!</p>
+<p>It seems like the number of programming languages is increasing more rapidly as time goes on as opposed to human language which went from many to present day where it seems to be converging towards one. Is this an indication that we are still very early in the computer revolution? Or perhaps an indication that the two things are very different from each other? Maybe this isn&rsquo;t an apt comparison, but it’s something that piques my interest.</p>
+
+<h3>Ruby as a language for people, instead of computers.</h3>
+
+
+<p>I really dig this concept.  When I was trying to figure out what programming language to learn, I remember trying one that required like 5 lines to add 2 + 2.  While I can understand various loyalties people have towards one language or another (I also think there can be a natural tendency towards this the more difficult something is), it seems to me there is something very powerful in a flexible language that makes it easy to express yourself simply&ndash;something Ruby is known for. The easier something is to express, implement, and understand, the more opportunity there is for trial and error and experimentation, something I think crucial to invention and making anything better. After all, as our instructor Avi Flombaum has mentioned, the human brain can only process a <a href = 'http://www.technologyreview.com/view/415041/new-measure-of-human-brain-processing-speed/'>limited amount of data</a> (around 60 bits per second) when making a decision, so why not leave as much of this power as possible to devise better ways to perform the task at hand than to comprehend the instructions in the first place?</p>
+
+<h3>Is language the most efficient way?</h3>
+
+
+<p>I also wonder where this takes you if you follow the premise of this argument further. Are there inefficiencies of the spoken and written word that perhaps could allow for even more powerful languages to emerge? Perhaps there’s a sort of programming equivalent that allows for comprehension on multiple levels at once, like Charles Joseph Minard’s famous info graphic charting <a href="https://en.wikipedia.org/?title=Charles_Joseph_Minard"> Napoleon’s disastrous march through Russia in 1812</a>. I don&rsquo;t know enough about CS to answer this question yet, but it’s something I’ve been thinking about and look forward to exploring further someday!</p>
 </div>
   
   
@@ -418,11 +556,19 @@ I really dig this concept.  When I was trying to figure out what programming lan
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2015/07/13/wheres/">What's a Form_for, or for That Matter, a Form_tag?</a>
+        <a href="/blog/2015/08/08/testing/">A Beginner's Testing Example...</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2015/06/23/dude/">Dude, Where's My Object?</a>
+        <a href="/blog/2015/07/26/favorite-gems/">A Few Favorite Gems...</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/07/13/form_for/">What's a Form_for, or for That Matter, a Form_tag? Some Examples...</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/06/28/dude/">Dude, Where's My Object?</a>
       </li>
     
       <li class="post">
