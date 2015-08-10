@@ -4,7 +4,7 @@
   <title><![CDATA[Travis Emmett's blog]]></title>
   <link href="http://travisje.github.io/atom.xml" rel="self"/>
   <link href="http://travisje.github.io/"/>
-  <updated>2015-08-08T19:09:04-04:00</updated>
+  <updated>2015-08-10T08:11:36-04:00</updated>
   <id>http://travisje.github.io/</id>
   <author>
     <name><![CDATA[Travis Emmett]]></name>
@@ -14,18 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[A Beginner's Testing Example...]]></title>
-    <link href="http://travisje.github.io/blog/2015/08/08/testing/"/>
-    <updated>2015-08-08T20:03:53-04:00</updated>
-    <id>http://travisje.github.io/blog/2015/08/08/testing</id>
-    <content type="html"><![CDATA[<p><p>Ok, so I have a confession to make. I have been avoiding spec testing like the plague. I mean, it&rsquo;s just so much fun be in the world of invention, where each keystroke heralds in a new feature or possibility. But, as we are in the second week of a project mode, I&rsquo;ve realized that this fantasy quickly breaks down and becomes a nightmare. We recently had a speaker come in to Flatiron and tell us that he would never work for a company that didn&rsquo;t perform tests and now I get it.</p>
-
-<p><p> I am currently working on a fun app with my team that allows individuals to challenge each other in any type of competition and allows users of the site to vote on who wins. We&rsquo;ve been building out various features on it, and have refactored our code, added more features, and then realized that a good chunk of our existing application was broken after the fact. So, I thoght now would be a good time to try to learn a few basics of testing. More to come soon!</p></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[A Few Favorite Gems...]]></title>
+    <title type="html"><![CDATA[A Few of My Favorite Gems...]]></title>
     <link href="http://travisje.github.io/blog/2015/07/26/favorite-gems/"/>
     <updated>2015-07-26T20:03:53-04:00</updated>
     <id>http://travisje.github.io/blog/2015/07/26/favorite-gems</id>
@@ -42,7 +31,7 @@
 
 <p><img class="left" src="http://travisje.github.io/images/rails-erd.png"></p>
 
-<p>Note that Rails ERD requires Graphviz to be installed on your system and detailed instructions can be found <a href = 'http://rails-erd.rubyforge.org/install.html'>here</a>.  Once installed, you can type simply "erd" in your console and find the rendered file in your project's main directory under erd.pdf.
+<p>Note that Rails ERD requires Graphviz to be installed on your system and detailed instructions can be found <a href = 'http://rails-erd.rubyforge.org/install.html'>here</a>.  Once installed, you can type simply "erd" in your console and find the rendered file in your project's main directory under erd.pdf. I actually like to display foreign keys in my tables so to have ERD do this you would type "rake erd attributes=foreign_key,content" into your console instead.
 </p>
 
 
