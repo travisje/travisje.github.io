@@ -106,7 +106,7 @@
 <blockquote><p>“Every dependency is like a little dot of glue that causes your class to stick to the things it touches. A few dots are necessary, but apply too much glue and your application will harden into a solid block.”
  -Sandi Metz</p></blockquote>
 
-<p>So very true and I couldn’t have said it better.  Minimizing dependencies between classes ensures that when one class needs to change that it will be pliable and won’t set off a cascade of expensive changes in other classes.  One small way to do this that I enjoyed reading a little more about was why it can be advantageous to use a singular hash argument when initiating an object instead of relying on several argument order ones:</p>
+<p>So very true and I couldn’t have said it better.  Minimizing dependencies between classes ensures that when one class needs to change that it will be pliable and won’t set off a cascade of expensive changes in other classes.  One small way to do this that I enjoyed reading a little more about was why it can be advantageous to use a singular hash argument when instantiating an object instead of relying on several argument order ones:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -118,6 +118,7 @@
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
+<span class='line-number'>11</span>
 </pre></td><td class='code'><pre><code class='Ruby'><span class='line'><span class="no">Class</span> <span class="no">Person</span>
 </span><span class='line'>  <span class="kp">attr_accessor</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:height</span><span class="p">,</span> <span class="ss">:hair_color</span>
 </span><span class='line'>
@@ -126,6 +127,7 @@
 </span><span class='line'>    <span class="vi">@height</span> <span class="o">=</span> <span class="n">args</span><span class="o">[</span><span class="ss">:height</span><span class="o">]</span>
 </span><span class='line'>    <span class="vi">@hair_color</span> <span class="o">=</span> <span class="n">args</span><span class="o">[</span><span class="ss">:hair_color</span><span class="o">]</span>
 </span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
 </span><span class='line'>
 </span><span class='line'><span class="no">Person</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="err">“</span><span class="no">Travis</span><span class="err">”</span><span class="p">,</span>  <span class="ss">hair_color</span><span class="p">:</span> <span class="err">“</span><span class="n">brown</span><span class="err">”</span><span class="p">,</span> <span class="ss">height</span><span class="p">:</span> <span class="mi">6</span><span class="o">.</span><span class="mi">25</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
