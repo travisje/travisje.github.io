@@ -4,7 +4,7 @@
   <title><![CDATA[Travis Emmett's blog]]></title>
   <link href="http://travisje.github.io/atom.xml" rel="self"/>
   <link href="http://travisje.github.io/"/>
-  <updated>2015-08-10T08:11:36-04:00</updated>
+  <updated>2015-09-24T16:04:34-04:00</updated>
   <id>http://travisje.github.io/</id>
   <author>
     <name><![CDATA[Travis Emmett]]></name>
@@ -12,6 +12,78 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Sandi Metz and Object-Oriented Design in Ruby]]></title>
+    <link href="http://travisje.github.io/blog/2015/09/24/Metz/"/>
+    <updated>2015-09-24T15:03:53-04:00</updated>
+    <id>http://travisje.github.io/blog/2015/09/24/Metz</id>
+    <content type="html"><![CDATA[<p>If you talk to most Rubyists, a book almost universally held in high esteem is Sandi Metz’s <a href= "http://www.amazon.com/Practical-Object-Oriented-Design-Ruby-Addison-Wesley/dp/0321721330/ref=sr_1_1?ie=UTF8&qid=1442510842&sr=8-1&keywords=practical+object+oriented+design+in+ruby">Practical Object-Oriented Design in Ruby</a>. Before my time at The Flatiron School, I had some experience in programming but mainly from the procedural side, so when Objects or Classes started coming into the fold, I would usually end up running for the hills. After the program, I felt like I had finally acquired a solid foundation in Object Orientation, but I still wanted to get a better understanding of some of its nuances. So I thought it was high time to pick up this Sandi&rsquo;s tome and see what all the fuss was about. And, about a quarter of the way in, I get it.</p>
+
+<p>It’s very cool having a seasoned developer like Sandi describe, in fluid prose, her best practices over the last 30 years of her career.  It’s like having a good friend available at all times to answer your nagging questions “Ok sure, but why?” It’s also great to see, rather than just teaching from the best code first, her progression through various refactorings starting with the newbie antipattern. So without further adieu, here are some interesting points from her from the first few chapters:</p>
+
+<h3>Classes and methods should have a single responsibility and do the smallest possible thing</h3>
+
+
+<p>Most people have heard this before but it&rsquo;s important because one of the major advantages of Object Oriented code is that if written correctly it should serve as a set of interchangeable parts to be used by future programmers. Implemented well it usually means features can be changed, removed, or added without changes cascading down through your application’s codebase in a programming nightmare.  D.R.Y. (Do not Repeat Yourself) ties in nicely here because achieving DRY code often forces you to break your program into small, unique parts.</p>
+
+<p>Deciding on how to divide up your classes and what responsibilities can be intimidating but Sandi provides a few rules of thumb: 1. Try to define the rule of your class in one sentence not using AND or OR. If it doesn’t fit, probably rethink it 2. As for what behaviors belong in your class, try asking your class its various methods in the form of a question to see if it makes sense. Like “Hi Appointment, what is your time?” sounds pretty good. But “Hi Appointment, what is your square footage?” sounds suspect and belongs in another class.</p>
+
+<h3>Avoid dependencies</h3>
+
+
+<p>Avoiding dependencies is a large topic (too large to be covered here) and is one of the central theme’s of Sandi’s book but I think this statement of hers sums it up nicely:</p>
+
+<blockquote><p>“Every dependency is like a little dot of glue that causes your class to stick to the things it touches. A few dots are necessary, but apply too much glue and your application will harden into a solid block.”
+ -Sandi Metz</p></blockquote>
+
+<p>So very true and I couldn’t have said it better.  Minimizing dependencies between classes ensures that when one class needs to change that it will be pliable and won’t set off a cascade of expensive changes in other classes.  One small way to do this that I enjoyed reading a little more about was why it can be advantageous to use a singular hash argument when initiating an object instead of relying on several argument order ones:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='Ruby'><span class='line'><span class="no">Class</span> <span class="no">Person</span>
+</span><span class='line'>  <span class="kp">attr_accessor</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:height</span><span class="p">,</span> <span class="ss">:hair_color</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@name</span> <span class="o">=</span> <span class="n">args</span><span class="o">[</span><span class="ss">:name</span><span class="o">]</span>
+</span><span class='line'>    <span class="vi">@height</span> <span class="o">=</span> <span class="n">args</span><span class="o">[</span><span class="ss">:height</span><span class="o">]</span>
+</span><span class='line'>    <span class="vi">@hair_color</span> <span class="o">=</span> <span class="n">args</span><span class="o">[</span><span class="ss">:hair_color</span><span class="o">]</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Person</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="err">“</span><span class="no">Travis</span><span class="err">”</span><span class="p">,</span>  <span class="ss">hair_color</span><span class="p">:</span> <span class="err">“</span><span class="n">brown</span><span class="err">”</span><span class="p">,</span> <span class="ss">height</span><span class="p">:</span> <span class="mi">6</span><span class="o">.</span><span class="mi">25</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Using a hash has several advantages including 1. As an initialization argument’s order and number can sometimes change in the future this helps prevent it from breaking when other classes instatiate a new object of that class 2. The keys are instructive of their purpose and what their values represent. 3. Why, removes unnecessary dependencies across your code of course!</p>
+
+<h3>Heed the Law of Demeter (LoD) aka Avoid Trainwrecks</h3>
+
+
+<p>The Law of Demeter broadly maintains that it is bad practice to send messages to distant objects when relying an intermediate object to get there.  Every Demeter infringement isn’t necessarily wrong but always be wary of the possibility especially if you are altering an attribute of a distant object and not just accessing it.  Following this advice results in loosely coupled objects, a hallmark of good OO code.</p>
+
+<p>Take for example if you have a class called “Order” and it has a method within it called “place_order” and within that method the following call is made: customer.cart.items.update_stock.  This would likely be a violation of Demeter because you are accessing the customer object to get to the cart object to get to the item objects to implement the update_stock method to change each item’s quantity attributes.  Whew, I’m outta breath. Sometimes this is simply referred to as “avoiding trainwrecks” due to a violation’s long method chain’s resemblance to train cars and their propensity to crash your program, which I think is much more memorable than remembering the Greek harvest goddess (sorry Dem).</p>
+
+<h3>Access instance variables via methods</h3>
+
+
+<p>Yes, I am guilty sometimes of referring to instance variables directly when I should use a reader or writer method instead. But I never fully understood why it was important not to.  Sandi makes a good argument for always using a reader method instead because if you decide that your instance variable requires an interim calculation after you have peppered the instances throughout your codebase, it will take some time to fix when using a method would require a code change in only one spot.</p>
+
+<h3>Actively categorize you methods as public or private</h3>
+
+
+<p>How you classify your methods within a class tells a story about your code and communicates your intentions to other programmers.  A public method generally carries along the following assumptions with it: 1. Other objects are free to utilize it 2. That it is stable and will not likely change 3. Communicates the responsibilities and purpose of your class. 4. That it should be tested.  Private methods on the other hand generally indicate that your code is not meant to be relied on by other objects (it actually cannot in Ruby without a workaround) and may change and generally is not part of the core testing framework of an application.</p>
+
+<p>Well, these are just a few of the many things I have learned thus far from Sandi and look forward to finishing the rest. It really is a fascinating book because it delves so deeply into the philosophy of programming and object orientation.  Perhaps I will go through some other lessons of hers when I have the chance.  Thanks for reading!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[A Few of My Favorite Gems...]]></title>
