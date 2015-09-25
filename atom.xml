@@ -4,7 +4,7 @@
   <title><![CDATA[Travis Emmett's blog]]></title>
   <link href="http://travisje.github.io/atom.xml" rel="self"/>
   <link href="http://travisje.github.io/"/>
-  <updated>2015-09-24T17:02:15-04:00</updated>
+  <updated>2015-09-25T11:08:14-04:00</updated>
   <id>http://travisje.github.io/</id>
   <author>
     <name><![CDATA[Travis Emmett]]></name>
@@ -27,12 +27,12 @@
 
 <p>Most people have heard this before but it&rsquo;s important because one of the major advantages of Object Oriented code is that if written correctly it should serve as a set of interchangeable parts to be used by future programmers. Implemented well it usually means features can be changed, removed, or added without changes cascading down through your application’s codebase in a programming nightmare.  D.R.Y. (Do not Repeat Yourself) ties in nicely here because achieving DRY code often forces you to break your program into small, unique parts.</p>
 
-<p>Deciding on how to divide up your classes and what responsibilities can be intimidating but Sandi provides a few rules of thumb: 1. Try to define the rule of your class in one sentence not using AND or OR. If it doesn’t fit, probably rethink it 2. As for what behaviors belong in your class, try asking your class its various methods in the form of a question to see if it makes sense. Like “Hi Appointment, what is your time?” sounds pretty good. But “Hi Appointment, what is your square footage?” sounds suspect and belongs in another class.</p>
+<p>Deciding on how to divide up your classes and what responsibilities can be intimidating but Sandi provides a few rules of thumb: 1. Try to define the purpose of your class in one sentence not using AND or OR. If it doesn’t fit, probably rethink it 2. As for what behaviors belong in your class, try asking your class its various methods in the form of a question to see if it makes sense. Like “Hi Appointment, what is your time?” sounds pretty good. But “Hi Appointment, what is your square footage?” sounds suspect and belongs in another class.</p>
 
 <h3>Avoid dependencies</h3>
 
 
-<p>Avoiding dependencies is a large topic (too large to be covered here) and is one of the central theme’s of Sandi’s book but I think this statement of hers sums it up nicely:</p>
+<p>Avoiding dependencies is a large topic (too large to be covered fully here) and is one of the central theme’s of Sandi’s book but I think this statement of hers sums it up nicely:</p>
 
 <blockquote><p>“Every dependency is like a little dot of glue that causes your class to stick to the things it touches. A few dots are necessary, but apply too much glue and your application will harden into a solid block.”
  -Sandi Metz</p></blockquote>
