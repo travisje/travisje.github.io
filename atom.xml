@@ -4,7 +4,7 @@
   <title><![CDATA[Travis Emmett's blog]]></title>
   <link href="http://travisje.github.io/atom.xml" rel="self"/>
   <link href="http://travisje.github.io/"/>
-  <updated>2015-09-25T11:08:14-04:00</updated>
+  <updated>2015-10-25T20:09:20-04:00</updated>
   <id>http://travisje.github.io/</id>
   <author>
     <name><![CDATA[Travis Emmett]]></name>
@@ -12,6 +12,54 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[A Spot of Tea, Anyone?]]></title>
+    <link href="http://travisje.github.io/blog/2015/10/25/a-spot-of-tea/"/>
+    <updated>2015-10-25T19:42:35-04:00</updated>
+    <id>http://travisje.github.io/blog/2015/10/25/a-spot-of-tea</id>
+    <content type="html"><![CDATA[<p>I was recently in a meeting with a web development team in New York and they mentioned they relied on a template language called Tea, which all their corporate online content is translated into before it goes live.  I had never heard of it before so I thought it would be a good chance to investigate further.</p>
+
+<p>Tea was created in 1997 and is a strongly typed, compiled programming language made to work within a Java-based hosting environment and is still used by several large websites today. While the original version of Tea is no longer maintained, many users now utilize TeaTrove, a maintained fork of the Tea source code.  According to <a href="https://github.com/teatrove/teatrove/wiki/Tea-Template-Language">TeaTrove’s GitHub page</a>, Tea’s main goal is “to provide an enforced separation between data processing and presentation, without sacrificing basic programming constructs.” It’s basically designed to be simple and ensure that all programming and business logic reside in a separate place.</p>
+
+<p>Tea utilizes templates for simple textual output and HTML. It relies on a Java hosting environment for all data and cannot directly acquire or modify data itself (it can however pass return values back to its Java host). Data must be passed from the hosting environment to the Tea template, either via objects sent through a template’s parameters or through a custom context that supplies various functions. Here’s an example of a simple Tea template:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='Java'><span class='line'><span class="o">&lt;%</span> <span class="n">template</span> <span class="nf">MyTemplate</span><span class="o">(</span><span class="n">PageInfo</span> <span class="n">page</span><span class="o">)</span> <span class="o">%&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;&lt;</span><span class="n">head</span><span class="o">&gt;&lt;</span><span class="n">title</span><span class="o">&gt;&lt;%</span> <span class="n">page</span><span class="o">.</span><span class="na">title</span> <span class="o">%&gt;&lt;/</span><span class="n">title</span><span class="o">&gt;&lt;/</span><span class="n">head</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;&lt;%</span> <span class="n">page</span><span class="o">.</span><span class="na">heading</span> <span class="o">%&gt;&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;&lt;%</span> <span class="n">page</span><span class="o">.</span><span class="na">body</span> <span class="o">%&gt;&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Tea’s code regions are delimited by “&lt;%” and “%>”.  Any code inside these regions is evaluated by Tea and then inserted into the surrounding html when rendered. Here a Tea template called MyTemplate is being declared and passed in a PageInfo object called page as a parameter.  The passed in object can then be accessed in order to output its various properties (i.e. using page.name). This reminds me of the Embedded Ruby syntax used when rendering Rails views as well as the same general principle Rails has of passing in a local variable to the view (although it should be noted that Tea explicitly forbids accessing objects not passed into the view as opposed to Rails which doesn’t).</p>
+
+<p>It is interesting to note that while explicitly declared variables are required in a template&rsquo;s declaration, a characteristic common in a strongly typed language,
+a local variable’s type created inside a Tea template is inferred based on assignment where the below variable “message” is inferred to be a string:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='Java'><span class='line'><span class="n">message</span> <span class="o">=</span> <span class="err">“</span><span class="n">Hello</span><span class="err">”</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After reading Tea’s documentation, it’s interesting to me that the authors state that it was intentionally designed to be a language of limited functionality. They seem to be walking a fine line of providing just enough functionality to be useful, but not enough to be able build a fully functional application:</p>
+
+<blockquote><p>“When introducing programming constructs into a template, the challenge is to come up with something that is powerful enough, yet at the same time be simple and safe. If it’s too powerful, then complete applications could be developed in templates. If it is too weak, then HTML formatting ends up in the application. If it isn’t simple or safe, then application developers end up writing and maintaining templates.”</p></blockquote>
+
+<p>I can definitely appreciate this as I have seen the temptation first hand to place parts of an application in the view which belong in the core of the application. I can imagine this temptation would lead you increasingly astray if the content you are producing exists in many different formats, something Tea was created specifically for.</p>
+
+<p>In practice, I also wonder if there are any drawbacks to its intended limited functionality and if any inefficiencies exist in maintaining a separate template system as opposed to a single framework uniting front and back end content.  I am definitely intrigued though by its enforcement of programming best practices and the fact that several major companies continue to rely on it today.  I definitely look forward to reconnecting with the developers I met in New York to pick their brains further about it!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Sandi Metz and Object-Oriented Design in Ruby]]></title>
