@@ -4,7 +4,7 @@
   <title><![CDATA[Travis Emmett's blog]]></title>
   <link href="http://travisje.github.io/atom.xml" rel="self"/>
   <link href="http://travisje.github.io/"/>
-  <updated>2015-10-26T09:42:56-04:00</updated>
+  <updated>2015-11-09T12:05:28-05:00</updated>
   <id>http://travisje.github.io/</id>
   <author>
     <name><![CDATA[Travis Emmett]]></name>
@@ -126,7 +126,7 @@ a local variable’s type created inside a Tea template is inferred based on ass
 
 <p>Yes, I am guilty sometimes of referring to instance variables directly when I should use a reader or writer method instead. But I never fully understood why it was important not to.  Sandi makes a good argument for always using a reader method instead because if you decide that your instance variable requires an interim calculation after you have peppered the instances throughout your codebase, it will take some time to fix when using a method would require a code change in only one spot.</p>
 
-<h3>Actively categorize you methods as public or private</h3>
+<h3>Actively categorize your methods as public or private</h3>
 
 
 <p>How you classify your methods within a class tells a story about your code and communicates your intentions to other programmers.  A public method generally carries along the following assumptions with it: 1. Other objects are free to utilize it 2. That it is stable and will not likely change 3. Communicates the responsibilities and purpose of your class. 4. That it should be tested.  Private methods on the other hand generally indicate that your code is not meant to be relied on by other objects (it actually cannot in Ruby without a workaround) and may change and generally is not part of the core testing framework of an application.</p>
